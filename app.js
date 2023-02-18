@@ -1,4 +1,4 @@
-// Load JSON data and make page resposive lines 1-126
+// Load JSON data and make page resposive
 import products from "./products.json" assert { type: "json" };
 let screenBig = false;
 let screenMin = false;
@@ -34,24 +34,42 @@ if (window.innerWidth <= screenSize) {
     screenBig = true;
 }
 
-function LoadProduct(params) {
+function LoadProduct(params = "", age = null) {
     const main = document.querySelector("#items");
     products.forEach(product => {
-        let item = MakeProduct(product);
-        const productDispay = document.createElement("div");
-        productDispay.setAttribute("class", "col-lg-4 col-md-6 p-2");
-        productDispay.setAttribute("data-products", "product");
-        productDispay.innerHTML = item;
-        main.append(productDispay);
-    });    
+        if ((age == null) ? true : product.age == age) {
+            if (product.name.toLowerCase().includes(params.toLowerCase())) {
+                let item = MakeProduct(product);
+                const productDispay = document.createElement("div");
+                productDispay.setAttribute("class", "col-lg-4 col-md-6 p-2");
+                productDispay.setAttribute("data-products", "product");
+                productDispay.innerHTML = item;
+                main.append(productDispay);
+            }
+        }
+    });
 }
 LoadProduct()
 
-document.querySelector("#clear").onclick = function(){
+document.querySelector("#SearchButton").onclick = function () {
     document.querySelectorAll('div[data-products="product"]').forEach(el => el.remove());
-    LoadProduct()
+    let SearchText = document.querySelector("#SearchTerm").value
+    // console.log(SearchText)
+    LoadProduct(SearchText)
     AddToCartButtonsHandle()
 }
+
+document.querySelectorAll(".AgeButton").forEach(e => {
+    e.onclick = function () {
+        document.querySelectorAll('div[data-products="product"]').forEach(el => el.remove());
+        // let SearchText = document.querySelector("#SearchTerm").value
+        let age = e.getAttribute("data-age")
+        // console.log(SearchText)
+        LoadProduct(undefined, age)
+        AddToCartButtonsHandle()
+    }
+});
+
 
 function MakeProduct(product) {
     let a = `
@@ -169,12 +187,13 @@ let CartProducts = {
 
 }
 
-let AddToCartButtons = document.querySelectorAll(".AddToCart")
-AddToCartButtons.forEach(e => {
-    CartProducts[e.getAttribute('data-productId')] = 0;
-});
+
 
 function AddToCartButtonsHandle() {
+    let AddToCartButtons = document.querySelectorAll(".AddToCart")
+    AddToCartButtons.forEach(e => {
+        CartProducts[e.getAttribute('data-productId')] = 0;
+    });
     AddToCartButtons.forEach(e => {
         e.onclick = function () {
             if (CheckAcc()) {
@@ -192,11 +211,20 @@ function AddToCartButtonsHandle() {
                 Swal.fire({
                     template: '#my-template'
                 }).then((result) => {
-                    if(result.isConfirmed) {
-                        window.location.assign(window.location.origin+"/Account/Login.html")
+                    if (result.isConfirmed) {
+                        window.location.assign(window.location.origin + "/Account/Login.html")
                     }
-                    if(result.isDenied) {
-                        window.location.assign(window.location.origin+"/Account/Register.html")
+                    if (result.isDenied) {
+                        if (localStorage.getItem("Guest") != null) {
+                            var User = {
+                                FullName: "Guest",
+                                UserName: "Guest",
+                                Email: "Guest"
+                            }
+                            localStorage.setItem("Guest", JSON.stringify(User))
+                        }
+                        sessionStorage.setItem("ActiveUser", "Guest")
+                        window.location.assign(window.location.origin)
                     }
                 })
             }
@@ -307,7 +335,7 @@ function AddButton() {
             localStorage.setItem(sessionStorage.getItem("ActiveUser"), JSON.stringify(Data))
             // console.log(Data)
             // console.log(JSON.parse(localStorage.getItem(sessionStorage.getItem("ActiveUser"))))
-            if (this.value < 1) {
+            if (this.value < 1 && this.value !='') {
                 toastr["info"]("Item removef from Cart")
                 ReloadCartPanel()
             }

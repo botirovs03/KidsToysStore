@@ -4,6 +4,7 @@
     "name": "MY NEIGHBOR TOTORO",
     "price": 29.99,
     "image": "totoro.png",
+    "age" : 7,
     "description": "GHIBLI - MY NEIGHBOR TOTORO - PUZZLE CRYSTAL 3D"
   },
   {
@@ -11,6 +12,7 @@
     "name": "GUNDAM THE ORIGIN",
     "price": 44.65,
     "image": "gandam.png",
+    "age" : 1,
     "description": "The classic RX-78-02 is back and now in Master Grade! This time it is styled as 'The Origin' version from the popular manga comic 'Mobile Suit Gundam : The Origin' This new Master Grade release features a new shoulder cannon as well a more flexible waist and legs. Effect parts for the gatlinggun muzzle flash as well as firing missile are also included. An amazingly engineered snapfit kit molded in multiple colors, with excellent peel-off stick-on markings."
   }
   ,
@@ -19,6 +21,7 @@
     "name": "GUNDAM THE ORIGIN",
     "price": 44.65,
     "image": "gandam.png",
+    "age" : 3,
     "description": "The classic RX-78-02 is back and now in Master Grade! This time it is styled as 'The Origin' version from the popular manga comic 'Mobile Suit Gundam : The Origin' This new Master Grade release features a new shoulder cannon as well a more flexible waist and legs. Effect parts for the gatlinggun muzzle flash as well as firing missile are also included. An amazingly engineered snapfit kit molded in multiple colors, with excellent peel-off stick-on markings."
   }
   ,
@@ -27,6 +30,7 @@
     "name": "GUNDAM THE ORIGIN",
     "price": 44.65,
     "image": "gandam.png",
+    "age" : 3,
     "description": "The classic RX-78-02 is back and now in Master Grade! This time it is styled as 'The Origin' version from the popular manga comic 'Mobile Suit Gundam : The Origin' This new Master Grade release features a new shoulder cannon as well a more flexible waist and legs. Effect parts for the gatlinggun muzzle flash as well as firing missile are also included. An amazingly engineered snapfit kit molded in multiple colors, with excellent peel-off stick-on markings."
   }
   ,
@@ -35,6 +39,7 @@
     "name": "GUNDAM THE ORIGIN",
     "price": 44.65,
     "image": "gandam.png",
+    "age" : 1,
     "description": "The classic RX-78-02 is back and now in Master Grade! This time it is styled as 'The Origin' version from the popular manga comic 'Mobile Suit Gundam : The Origin' This new Master Grade release features a new shoulder cannon as well a more flexible waist and legs. Effect parts for the gatlinggun muzzle flash as well as firing missile are also included. An amazingly engineered snapfit kit molded in multiple colors, with excellent peel-off stick-on markings."
   }
   ,
@@ -43,6 +48,7 @@
     "name": "GUNDAM THE ORIGIN",
     "price": 44.65,
     "image": "gandam.png",
+    "age" : 13,
     "description": "The classic RX-78-02 is back and now in Master Grade! This time it is styled as 'The Origin' version from the popular manga comic 'Mobile Suit Gundam : The Origin' This new Master Grade release features a new shoulder cannon as well a more flexible waist and legs. Effect parts for the gatlinggun muzzle flash as well as firing missile are also included. An amazingly engineered snapfit kit molded in multiple colors, with excellent peel-off stick-on markings."
   }
   ,
@@ -51,6 +57,7 @@
     "name": "GUNDAM THE ORIGIN",
     "price": 44.65,
     "image": "gandam.png",
+    "age" : 16,
     "description": "The classic RX-78-02 is back and now in Master Grade! This time it is styled as 'The Origin' version from the popular manga comic 'Mobile Suit Gundam : The Origin' This new Master Grade release features a new shoulder cannon as well a more flexible waist and legs. Effect parts for the gatlinggun muzzle flash as well as firing missile are also included. An amazingly engineered snapfit kit molded in multiple colors, with excellent peel-off stick-on markings."
   }
   ,
@@ -59,6 +66,7 @@
     "name": "GUNDAM THE ORIGIN",
     "price": 44.65,
     "image": "gandam.png",
+    "age" : 16,
     "description": "The classic RX-78-02 is back and now in Master Grade! This time it is styled as 'The Origin' version from the popular manga comic 'Mobile Suit Gundam : The Origin' This new Master Grade release features a new shoulder cannon as well a more flexible waist and legs. Effect parts for the gatlinggun muzzle flash as well as firing missile are also included. An amazingly engineered snapfit kit molded in multiple colors, with excellent peel-off stick-on markings."
   }
 ]

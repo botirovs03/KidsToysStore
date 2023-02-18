@@ -66,16 +66,16 @@
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link text-dark" id="register" href="./Account/Register.html">Register</a>
+              <a class="nav-link text-dark" style="display: none;" id="register" href="./Account/Register.html">Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" id="login" href="./Account/Login.html">Login</a>
+              <a class="nav-link text-dark" style="display: none;" id="login" href="./Account/Login.html">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" id="User" href="#"></a>
+              <a class="nav-link text-dark" style="display: none;" id="User" href="#"></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" id="LogOut" href="#">LogOut</a>
+              <a class="nav-link text-dark" style="display: none;" id="LogOut" href="#">LogOut</a>
             </li>
           </ul>
         </div>
@@ -88,8 +88,8 @@
       <div class="flex-item-left">
 
         <div class="search">
-          <input type="search" name="search" class="searchTerm" pattern=".*\S.*" required>
-          <button class="search-btn searchButton" type="button" onclick="someFunc()">
+          <input type="search" name="search" class="searchTerm" id="SearchTerm" pattern=".*\S.*" required>
+          <button class="search-btn searchButton" id="SearchButton" type="button">
             <span><i class="bi bi-search"></i></span>
           </button>
         </div>
@@ -153,8 +153,31 @@
           <!-- this is div -->
           <img class="KidsToysStore" src="./images/KidsToysStore.png" />
         </div>
-        <div class="d-grid gap-2">
-          <button type="button" name="" id="clear" class="btn btn-primary">Button</button>
+
+        <div class="ByAge">
+          <div class="GiftByAgeText">
+            Gift by Kid Age:
+          </div>
+          <div class="AgeButton" data-age="1">
+            <div class="age">1+</div>
+            <div class="textYear">year</div>
+          </div>
+          <div class="AgeButton" data-age="3">
+            <div class="age">3+</div>
+            <div class="textYear">year</div>
+          </div>
+          <div class="AgeButton" data-age="7">
+            <div class="age">7+</div>
+            <div class="textYear">year</div>
+          </div>
+          <div class="AgeButton" data-age="13">
+            <div class="age">13+</div>
+            <div class="textYear">year</div>
+          </div>
+          <div class="AgeButton" data-age="16">
+            <div class="age">16+</div>
+            <div class="textYear">year</div>
+          </div>
         </div>
 
 
@@ -209,11 +232,11 @@
       Close
     </swal-button>
     <swal-button color="#42bee8" type="deny">
-      Sign up
+      Continue as a Guest
     </swal-button>
     <swal-param name="allowEscapeKey" value="false" />
     <swal-param name="customClass" value='{ "popup": "my-popup" }' />
-    <swal-function-param name="didOpen" value="popup => console.log(popup)" />
+    <swal-function-param name="didOpen"/>
   </template>
   <!-- sweetalert2 -->
 

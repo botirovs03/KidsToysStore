@@ -95,7 +95,7 @@ function store() {
             Gender: document.querySelector('input[name="gender"]:checked').value
         }
         localStorage.setItem(User.Email, JSON.stringify(User))
-        console.log(JSON.parse(localStorage.getItem(User.Email)).FullName)
+        // console.log(JSON.parse(localStorage.getItem(User.Email)).FullName)
         Swal.fire({
             position: 'top-end',
             icon: 'success',
