@@ -34,16 +34,61 @@ if (window.innerWidth <= screenSize) {
     screenBig = true;
 }
 
-const main = document.querySelector("#items");
-products.forEach(product => {
-    let item = MakeProduct(product);
-    const productDispay = document.createElement("div");
-    productDispay.setAttribute("class", "col-lg-4 col-md-6 p-2");
-    productDispay.innerHTML = item;
-    main.append(productDispay);
-});
+function LoadProduct(params) {
+    const main = document.querySelector("#items");
+    products.forEach(product => {
+        let item = MakeProduct(product);
+        const productDispay = document.createElement("div");
+        productDispay.setAttribute("class", "col-lg-4 col-md-6 p-2");
+        productDispay.setAttribute("data-products", "product");
+        productDispay.innerHTML = item;
+        main.append(productDispay);
+    });    
+}
+LoadProduct()
 
+document.querySelector("#clear").onclick = function(){
+    document.querySelectorAll('div[data-products="product"]').forEach(el => el.remove());
+    LoadProduct()
+    AddToCartButtonsHandle()
+}
 
+function MakeProduct(product) {
+    let a = `
+    <div class="col-12 p-1" style="border-radius: 10px; block-size: fit-content; background-color: white;">
+
+            <div class="imageBack">
+                <img src="images/${product.image}" class="card-img-top rounded ProductImage" />
+            </div>
+            <div class="ProductCard">
+                <div class="card-body">
+                    <div class="pl-1">
+                        <p class="PrTitle">
+                            ${product.name}
+                        </p>
+                    </div>
+                    <div class="pl-1">
+                        <p class="ProductDescription" title="${product.description}">
+                        ${product.description}
+                        </p>
+                    </div>
+                    <div class="pl-1">
+                        <div class="PrPrice">
+                            ${product.price}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mx-4 mb-4">
+                <a class="form-control mt-1 AddToCart" data-productId="${product.id}">
+                    add to cart
+                </a>
+            </div>
+            
+        </div>
+`
+    return a;
+}
 // let CartMenu = document.querySelector("#cartMenu");
 // document.querySelector("#cartMenu a").onclick = function () {
 //     document.querySelector("#cartMenu").classList.toggle("cartMenu-hidden")
@@ -54,8 +99,6 @@ products.forEach(product => {
 //     document.querySelector("#cartMenu").style.height = "0px";
 
 // }
-
-
 
 document.querySelector("#CartIcon").onclick = function () {
     isOpen = !isOpen
@@ -118,47 +161,8 @@ function resize() {
     }
 }
 
-function MakeProduct(product) {
-    let a = `
-    <div class="col-12 p-1" style="border-radius: 10px; block-size: fit-content; background-color: white;">
-
-            <div class="imageBack">
-                <img src="images/${product.image}" class="card-img-top rounded ProductImage" />
-            </div>
-            <div class="ProductCard">
-                <div class="card-body">
-                    <div class="pl-1">
-                        <p class="PrTitle">
-                            ${product.name}
-                        </p>
-                    </div>
-                    <div class="pl-1">
-                        <p class="ProductDescription" title="${product.description}">
-                        ${product.description}
-                        </p>
-                    </div>
-                    <div class="pl-1">
-                        <div class="PrPrice">
-                            ${product.price}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mx-4 mb-4">
-                <a class="form-control mt-1 AddToCart" data-productId="${product.id}">
-                    add to cart
-                </a>
-            </div>
-            
-        </div>
-`
-    return a;
-}
 ///////////////////////////////////////////////////////////////////////////
 //Initialize Local storage variables
-if (localStorage.getItem('')) {
-
-}
 
 
 let CartProducts = {
@@ -170,34 +174,36 @@ AddToCartButtons.forEach(e => {
     CartProducts[e.getAttribute('data-productId')] = 0;
 });
 
-AddToCartButtons.forEach(e => {
-    e.onclick = function () {
-        if (CheckAcc()) {
-            UserData = JSON.parse(localStorage.getItem(sessionStorage.getItem('ActiveUser')))
-            if (UserData.CartProducts[e.getAttribute('data-productId')] != null) {
-                UserData.CartProducts[e.getAttribute('data-productId')] = Number(UserData.CartProducts[e.getAttribute('data-productId')]) + Number(1);
+function AddToCartButtonsHandle() {
+    AddToCartButtons.forEach(e => {
+        e.onclick = function () {
+            if (CheckAcc()) {
+                UserData = JSON.parse(localStorage.getItem(sessionStorage.getItem('ActiveUser')))
+                if (UserData.CartProducts[e.getAttribute('data-productId')] != null) {
+                    UserData.CartProducts[e.getAttribute('data-productId')] = Number(UserData.CartProducts[e.getAttribute('data-productId')]) + Number(1);
+                } else {
+                    UserData.CartProducts[e.getAttribute('data-productId')] = Number(1);
+                }
+                localStorage.setItem(sessionStorage.getItem('ActiveUser'), JSON.stringify(UserData))
+                // console.log(localStorage.getItem(sessionStorage.getItem('ActiveUser')))
+                toastr["success"]("Added to Cart Succesfully")
+                ReloadCartPanel()
             } else {
-                UserData.CartProducts[e.getAttribute('data-productId')] = Number(1);
+                Swal.fire({
+                    template: '#my-template'
+                }).then((result) => {
+                    if(result.isConfirmed) {
+                        window.location.assign(window.location.origin+"/Account/Login.html")
+                    }
+                    if(result.isDenied) {
+                        window.location.assign(window.location.origin+"/Account/Register.html")
+                    }
+                })
             }
-            localStorage.setItem(sessionStorage.getItem('ActiveUser'), JSON.stringify(UserData))
-            // console.log(localStorage.getItem(sessionStorage.getItem('ActiveUser')))
-            toastr["success"]("Added to Cart Succesfully")
-            ReloadCartPanel()
-        } else {
-            Swal.fire({
-                template: '#my-template'
-            }).then((result) => {
-                if(result.isConfirmed) {
-                    window.location.assign(window.location.origin+"/Account/Login.html")
-                }
-                if(result.isDenied) {
-                    window.location.assign(window.location.origin+"/Account/Register.html")
-                }
-            })
         }
-    }
-});
-
+    });
+}
+AddToCartButtonsHandle()
 /////////
 // Cart Load
 
