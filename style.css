@@ -3,15 +3,13 @@
   src: url(./fonts/Poppins-SemiBold.ttf);
 }
 
-/* .footer {
-  box-sizing: border-box;
-  position: absolute;
-  bottom: 1rem;
-  width: calc( 100% - 2rem );
-  
+
+.footer {
+  background-color: #060F30;
+  height: 120px !important;
+  margin: auto 1rem -60px;  
   height: 60px;
-  background: linear-gradient(to left, #8c8df1, #e786f4);
-} */
+}
 
 :root {
   --leftSize: 70%;
@@ -63,11 +61,11 @@ main img {
 }
 
 .logoImage {
-  aspect-ratio: 2 / 1;
-  height: 50px;
+  aspect-ratio: 51 / 16;
+  height: 51px;
   margin: 0;
-  margin-left: 30px;
-  margin-right: 30px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .ByAge {
@@ -287,7 +285,7 @@ main img {
 }
 
 .contentBody {
-  background-color: #f6f7fb;
+  background: linear-gradient(#f6f7fb, #FCFCFC);
 }
 
 .ItemImage {
@@ -355,7 +353,7 @@ main img {
   margin: 12px;
 }
 .ProductImage {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 2383 / 2733;
 }
 .PrTitle {
   font-family: Arial, Helvetica, sans-serif;
@@ -434,6 +432,12 @@ main img {
   transform: translateY(2px);
   transition: all 0s;
 }
+
+.backgroundImage{
+width: 100%;
+}
+
+
 /* * {
   border: 1px solid black;
 } */

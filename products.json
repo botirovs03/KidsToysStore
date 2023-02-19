@@ -1,6 +1,14 @@
 [
   {
     "id": 1,
+    "name": "Paddington Bear Cycling Plush",
+    "price": 13.22,
+    "image": "paddington.png",
+    "age" : 3,
+    "description": "Paddington bear is now off on his bike! There is plenty of fun and adventures to be had with 35cm cycling Paddington as he cycles around randomly on his red bicycle to a catchy tune!"
+  },  
+  {
+    "id": 2,
     "name": "MY NEIGHBOR TOTORO",
     "price": 29.99,
     "image": "totoro.png",
@@ -8,39 +16,30 @@
     "description": "GHIBLI - MY NEIGHBOR TOTORO - PUZZLE CRYSTAL 3D"
   },
   {
-    "id": 2,
-    "name": "GUNDAM THE ORIGIN",
-    "price": 44.65,
-    "image": "gandam.png",
-    "age" : 1,
-    "description": "The classic RX-78-02 is back and now in Master Grade! This time it is styled as 'The Origin' version from the popular manga comic 'Mobile Suit Gundam : The Origin' This new Master Grade release features a new shoulder cannon as well a more flexible waist and legs. Effect parts for the gatlinggun muzzle flash as well as firing missile are also included. An amazingly engineered snapfit kit molded in multiple colors, with excellent peel-off stick-on markings."
-  }
-  ,
-  {
     "id": 3,
-    "name": "GUNDAM THE ORIGIN",
-    "price": 44.65,
-    "image": "gandam.png",
+    "name": "Plush Jiji Sitting - Kiki'S Delivery Service",
+    "price": 13.95,
+    "image": "Jiji.png",
     "age" : 3,
-    "description": "The classic RX-78-02 is back and now in Master Grade! This time it is styled as 'The Origin' version from the popular manga comic 'Mobile Suit Gundam : The Origin' This new Master Grade release features a new shoulder cannon as well a more flexible waist and legs. Effect parts for the gatlinggun muzzle flash as well as firing missile are also included. An amazingly engineered snapfit kit molded in multiple colors, with excellent peel-off stick-on markings."
+    "description": "GUND is proud to introduce Jiji - the cute and magical talking cat from beloved animated Miyzaki film 'Kiki's Delivery Service.' Jiji is a loyal companion always there to offer advice to young witches and wizards in training. Accurate character details from the film such as Jiji's red bow are sure to please Studio Ghibli enthusiasts of all ages. Features a classic, 6' seated pose."
   }
   ,
   {
     "id": 4,
-    "name": "GUNDAM THE ORIGIN",
-    "price": 44.65,
-    "image": "gandam.png",
-    "age" : 3,
-    "description": "The classic RX-78-02 is back and now in Master Grade! This time it is styled as 'The Origin' version from the popular manga comic 'Mobile Suit Gundam : The Origin' This new Master Grade release features a new shoulder cannon as well a more flexible waist and legs. Effect parts for the gatlinggun muzzle flash as well as firing missile are also included. An amazingly engineered snapfit kit molded in multiple colors, with excellent peel-off stick-on markings."
+    "name": "Red Power Plumber MOC",
+    "price": 99.99,
+    "image": "RedPlumber.png",
+    "age" : 13,
+    "description": "Build your very own custom designed red plumber figure that was designed by master builder Tyler Clites. Parts needed: 256 LEGO® bricks"
   }
   ,
   {
     "id": 5,
-    "name": "GUNDAM THE ORIGIN",
-    "price": 44.65,
-    "image": "gandam.png",
-    "age" : 1,
-    "description": "The classic RX-78-02 is back and now in Master Grade! This time it is styled as 'The Origin' version from the popular manga comic 'Mobile Suit Gundam : The Origin' This new Master Grade release features a new shoulder cannon as well a more flexible waist and legs. Effect parts for the gatlinggun muzzle flash as well as firing missile are also included. An amazingly engineered snapfit kit molded in multiple colors, with excellent peel-off stick-on markings."
+    "name": "Usaburo Japanese Kokeshi Doll",
+    "price": 78.27,
+    "image": "Usaburo.png",
+    "age" : 3,
+    "description": "Traditional kokeshi dolls originated in northern Japan during the middle of the Edo period around 300 years ago. It is said that artisans who were skilled in woodworking began crafting these hand-carved and painted wooden dolls to sell to people who were visiting the many hot springs in the region. These traditional kokeshi dolls were usually made of a cylindrical, slender piece of wood with a round head. The body of the doll was usually painted with a floral design and the head with thin lines to resemble a face."
   }
   ,
   {
@@ -54,19 +53,19 @@
   ,
   {
     "id": 7,
-    "name": "GUNDAM THE ORIGIN",
+    "name": "LGH 1800Pcs Totoro Nano Bricks",
     "price": 44.65,
-    "image": "gandam.png",
+    "image": "NanoTotoro.png",
     "age" : 16,
-    "description": "The classic RX-78-02 is back and now in Master Grade! This time it is styled as 'The Origin' version from the popular manga comic 'Mobile Suit Gundam : The Origin' This new Master Grade release features a new shoulder cannon as well a more flexible waist and legs. Effect parts for the gatlinggun muzzle flash as well as firing missile are also included. An amazingly engineered snapfit kit molded in multiple colors, with excellent peel-off stick-on markings."
+    "description": "Thanks to the mini-modules, it is possible to build detailed models. Build your favorite animals, musical instruments and architectural sites from around the world gathering to build and show your works of art."
   }
   ,
   {
     "id": 8,
-    "name": "GUNDAM THE ORIGIN",
+    "name": "KAY Plush Yoga Bear",
     "price": 44.65,
-    "image": "gandam.png",
+    "image": "YogaBear.png",
     "age" : 16,
-    "description": "The classic RX-78-02 is back and now in Master Grade! This time it is styled as 'The Origin' version from the popular manga comic 'Mobile Suit Gundam : The Origin' This new Master Grade release features a new shoulder cannon as well a more flexible waist and legs. Effect parts for the gatlinggun muzzle flash as well as firing missile are also included. An amazingly engineered snapfit kit molded in multiple colors, with excellent peel-off stick-on markings."
+    "description": "※PP cotton,plush,Soft and adorable, yet durable enough for your growing child. \n※Yoga Bear is the best yoga partner or plush toys, and loves to be a decoration on a table."
   }
 ]
