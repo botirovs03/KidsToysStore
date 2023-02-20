@@ -1,6 +1,7 @@
 // Load JSON data and make page resposive
 import JsonProduct from "./products.json" assert { type: "json" };
-
+// to make BestSeller Slider work Smooth
+document.querySelector(".item").remove()
 // check whether products exists in local storage 
 if (localStorage.getItem("LocalProducts") == null) {
     localStorage.setItem("LocalProducts", JSON.stringify([]))
@@ -100,21 +101,18 @@ function MakeProduct(product) {
     if (product.best) {
         a = `
             <p class="card-text">
-              <img src="${product.image.slice(0, 5) != "data:" ? "images/" + product.image : product.image}" style="width: 100%;">
-            </p>
-          </div>
-          <div class="text-black strong">
-            ${product.name}
-            
-          </div>
-          <div class="text-center">
-          <span>${"$" + product.price} </span>
-          ///////////
-          </div>
+                <img src="${product.image.slice(0, 5) != "data:" ? "images/" + product.image : product.image}" style="width: 100%;">
+              </p>
+              <div class="bestName">
+                ${product.name} 
+              </div>
+              <div class="text-center bestCart">
+                <span class="bprice">${"Price: $" + product.price} </span>
+                <a class="AddToCartSel bestButton" data-productId="${product.id}">
+                        To Cart
+                </a>
+              </div>
           `
-        //   <a class="AddToCart bestButton" data-productId="${product.id}">
-        //           To Cart
-        //   </a>
     } else {
         a = `
     <div class="col-12 p-1" style="border-radius: 10px; block-size: fit-content; background-color: white;">
@@ -142,7 +140,7 @@ function MakeProduct(product) {
                 </div>
             </div>
             <div class="mx-4 mb-4">
-                <a class="form-control mt-1 AddToCart" data-productId="${product.id}">
+                <a class="form-control mt-1 AddToCart AddToCartSel" data-productId="${product.id}">
                     add to cart
                 </a>
             </div>
@@ -236,7 +234,7 @@ let CartProducts = {
 
 
 function AddToCartButtonsHandle() {
-    let AddToCartButtons = document.querySelectorAll(".AddToCart")
+    let AddToCartButtons = document.querySelectorAll(".AddToCartSel")
     AddToCartButtons.forEach(e => {
         CartProducts[e.getAttribute('data-productId')] = 0;
     });

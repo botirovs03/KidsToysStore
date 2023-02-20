@@ -5,7 +5,7 @@
     "price": 13.22,
     "image": "paddington.png",
     "age" : 3,
-    "best": true,
+    "best": false,
     "description": "Paddington bear is now off on his bike! There is plenty of fun and adventures to be had with 35cm cycling Paddington as he cycles around randomly on his red bicycle to a catchy tune!"
   },  
   {
@@ -75,5 +75,41 @@
     "age" : 16,
     "best": false,
     "description": "※PP cotton,plush,Soft and adorable, yet durable enough for your growing child. \n※Yoga Bear is the best yoga partner or plush toys, and loves to be a decoration on a table."
+  },
+  {
+    "id": 9,
+    "name": "Doraemon Figurine",
+    "price": 24.99,
+    "image": "Top1.png",
+    "age" : 3,
+    "best": true,
+    "description": "From FiguartsZERO comes the internationally popular robot-cat Doraemon in a collectible statue figure series Complete with display stage! You can create various facial expressions with interchangeable parts and pose them in many ways with movable arms."
+  },
+  {
+    "id": 10,
+    "name": "nanoblock - Pikachu",
+    "price": 44.65,
+    "image": "Top2.png",
+    "age" : 16,
+    "best": true,
+    "description": "Pikachu naturally stores up electricity in its body, and it needs to discharge that energy on a regular basis to maintain good health. To take advantage of this, some have suggested creating a Pikachu-fueled power plant. Pikachu from Nanoblock's Pokémon Collection series stands approximately 1.8' tall and has 120 pieces. This is considered an entry level kit. This kit features all the details one would expect and is fun and easy to build! Look for origin of shipment: Only items shipped from within North America are being sold by authorized U.S. Retailers. The product box will have a Bluefin warning label, which is proof that you are purchasing an officially licensed Kawada product, distributed by its sole and authorized distributor (Bluefin) for the U.S. Markets. This product has been thoroughly tested for safety and meets all North American consumer product safety regulations. The affixed label also entitles the purchaser to product support assistance within the United States."
+  },
+  {
+    "id": 11,
+    "name": "Hedgehog by legotruman",
+    "price": 33.16,
+    "image": "Top3.png",
+    "age" : 7,
+    "best": true,
+    "description": "Create your very own 3D Hedgehog with this micro-size block building set, contains over 150 pieces"
+  },
+  {
+    "id": 12,
+    "name": "Nano Sponge Bob",
+    "price": 15.99,
+    "image": "Top4.png",
+    "age" : 3,
+    "best": true,
+    "description": "SpongeBob has celebrated the 20th anniversary of the character nano has arrived.\nThe 'Chara Nano' is a new collectible line of nanoblock characters that are available in the same standard size and package. The packaging can also be used as a collection case to display the finished product.\nSpongebob is 2019 to 2020 summer 2019. In the summer of 2020, the film will be released as well.\nReproduces details such as the crisp eyes and body patterns."
   }
 ]
