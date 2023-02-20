@@ -109,11 +109,12 @@ function MakeProduct(product) {
           </div>
           <div class="text-center">
           <span>${"$" + product.price} </span>
-            <a class="AddToCart bestButton" data-productId="${product.id}">
-                    To Cart
-            </a>
-        </div>
-      `
+          ///////////
+          </div>
+          `
+        //   <a class="AddToCart bestButton" data-productId="${product.id}">
+        //           To Cart
+        //   </a>
     } else {
         a = `
     <div class="col-12 p-1" style="border-radius: 10px; block-size: fit-content; background-color: white;">
