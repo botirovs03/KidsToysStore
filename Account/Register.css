@@ -143,6 +143,14 @@ form .button input:hover {
   margin-left: 0px;
   margin-right: 0px;
 }
+
+.footer {
+  background-color: #060f30;
+  height: 120px !important;
+  margin: auto 1rem -60px;
+  height: 60px;
+}
+
 @media (max-width: 584px) {
   .container {
     max-width: 100%;

@@ -144,6 +144,12 @@ main img {
   flex: 70%;
 }
 
+.flex-item-leftS {
+  flex: 70%;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
 .flex-item-right {
   flex: 30%;
 }
@@ -170,7 +176,7 @@ main img {
   overflow: hidden;
   width: inherit;
   transition: all 0.5s;
-  box-shadow: 0px 5px 20px 2px;
+  box-shadow: 5px 1px 10px 0.05px #6caafb59;
 }
 
 .cartMenu-hidden {
@@ -224,40 +230,48 @@ main img {
 }
 
 .search {
-  margin: 0px 0;
+  margin: 0px ;
   width: 100%;
 }
 
+.search:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .searchTerm {
-  width: 85%;
+  float: left;
+  box-sizing: border-box !important;
+  width: 84%;
   margin-right: 0 !important;
   outline: none;
   border-radius: 0 5px 5px 5px;
-  background: rgba(0, 0, 0, 0);
+  background: white;
   color: white;
   padding-left: 10px;
 }
 .searchButton {
-  margin: 0;
+  float: right;
+  margin: 0 10px 0 0;
   border-radius: 5px;
   text-align: center;
   display: inline-block;
   width: 14%;
   margin: 0;
-  color: white;
   height: 30px;
-  background-color: rgb(61, 57, 57);
+  background-color: white;
+  line-height: 16px;
 }
 .searchButton:hover {
+  align-items: baseline;
   transform: scale(1.05);
   border-radius: 5px;
   text-align: center;
   display: inline-block;
   width: 14%;
   margin: 0;
-  color: white;
   height: 30px;
-  background-color: rgb(152, 146, 146);
   transition: transform 0.24s;
 }
 .cartRight {
@@ -331,8 +345,10 @@ main img {
   width: 0;
 }
 .cartTitle {
+  height: 2em;
   font-weight: bold;
   word-wrap: break-word;
+  white-space: normal;
 }
 #price::after {
   content: "$";
@@ -362,7 +378,7 @@ main img {
   aspect-ratio: 2383 / 2733;
 }
 .PrTitle {
-  height: 2em;
+  height: 3.3em;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 900;
 }
@@ -479,7 +495,7 @@ main img {
 .item {
   color: black;
   font-weight: 900;
-  background:linear-gradient(#ffffff, #F6F7FB);
+  background: linear-gradient(#ffffff, #f6f7fb);
   border-radius: 0 0 10% 10%;
 }
 
@@ -516,7 +532,8 @@ main img {
 } */
 @media (max-width: 768px) {
   .flex-item-right,
-  .flex-item-left {
+  .flex-item-left,
+  .flex-item-leftS {
     flex: 100%;
   }
   .flex-item-right {

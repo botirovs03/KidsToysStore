@@ -65,7 +65,8 @@ function LoadProduct(params = "", age = null) {
                     top.append(productDispay);
                 } else {
                     const productDispay = document.createElement("div");
-                    productDispay.setAttribute("class", "col-lg-4 col-md-6 p-2");
+                    // productDispay.setAttribute("class", "col-lg-4 col-md-6 p-2");
+                    productDispay.setAttribute("class", " col-lg-4 col-md-4 col-sm-6 p-2");
                     productDispay.setAttribute("data-products", "product");
                     productDispay.innerHTML = item;
                     main.append(productDispay);

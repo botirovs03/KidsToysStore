@@ -11,7 +11,7 @@ function store() {
 
     console.log()
 
-    if (localStorage.getItem(document.getElementById('Email').value) != null) {
+    if (localStorage.getItem(document.getElementById('Email').value) != null && document.getElementById('Email').value != "") {
         console.log("0")
         document.getElementById('Email').focus();
         let li = document.createElement("li");
