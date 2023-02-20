@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../wwwroot/css/bootswatch.css">
+    <style>
+        /* * {
+            border: 1px solid black;
+        } */
+    </style>
+</head>
+
+<body>
+    <form action="../index.html">
+        <div class="signup-box p-3">
+            <h1>Add Product</h1>
+            <div class="mb-3">
+                <label for="ProductName" class="form-label">Name</label>
+                <input type="text" class="form-control" name="ProductName" id="ProductName" placeholder="Product name"
+                    required>
+            </div>
+            <div class="mb-3">
+                <label for="Price" class="form-label">Price </label>
+                <input type="number" class="form-control" name="Price" id="Price" placeholder="Product Price $"
+                    required>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Choose Image</label>
+                <input type="file" class="form-control" name="" id="ImageFile" placeholder=""
+                    aria-describedby="fileHelpId" required>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Description</label>
+                <textarea class="form-control" name="" id="Description" rows="3" required></textarea>
+            </div>
+
+            <div class="row justify-content-center align-items-center g-2">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="bestSeller" class="form-label">Bestseller?</label>
+                        <select class="form-select form-select-sm" name="bestSeller" id="bestSeller">
+                            <option selected value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="Age" class="form-label">Age</label>
+                        <select class="form-select form-select-sm" name="Age" id="Age">
+                            <option selected value="1">1+</option>
+                            <option value="3">3+</option>
+                            <option value="7">7+</option>
+                            <option value="13">13+</option>
+                            <option value="16">16+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <input name="button" onclick="Add()" class="btn btn-primary" type="button" value="Button">
+        </div>
+
+    </form>
+
+
+    <script>
+        function Add(event) {
+            if (document.querySelector("form").checkValidity()) {
+                let img = document.querySelector("#ImageFile")
+                let imageUrl
+                encodeImageFileAsURL(img)
+
+            }
+
+        }
+
+        function encodeImageFileAsURL(element) {
+            var file = element.files[0];
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                imageUrl = reader.result
+                let Product = {
+                    "id": Number(localStorage.getItem("IdentityNumber")),
+                    "name": document.querySelector("#ProductName").value,
+                    "price": Number(document.querySelector("#Price").value),
+                    "image": imageUrl,
+                    "age": Number(document.querySelector("#Age").value),
+                    "best": Boolean(document.querySelector("#bestSeller").value),
+                    "description": document.querySelector("#Description").value
+                }
+                let localStorageProduct = JSON.parse(localStorage.getItem("LocalProducts"))
+                localStorageProduct.push(Product);
+                
+                console.log(localStorageProduct)
+                localStorage.setItem("LocalProducts", JSON.stringify(localStorageProduct))
+            }
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+
+</html>

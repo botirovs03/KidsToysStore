@@ -426,6 +426,7 @@ main img {
   transition: all 0s;
 }
 
+
 .AddToCart:active:hover {
   background-color: #d3af1e;
   box-shadow: 0 0;
@@ -437,6 +438,32 @@ main img {
 width: 100%;
 }
 
+.bestButton {
+  border-radius: 15px;
+  color: white;
+  border:none;
+  background-color: #FBCE20 ;
+  padding: auto;
+  width: 200px;
+  height: 50px;
+  box-shadow: 0.5px 0.8px 2px 1px #d9b31b;
+  text-decoration: none;
+  margin: auto 10px;
+}
+.item {
+  color: black;
+  font-weight: 900;
+}
+.bestButton:hover {
+  border-radius: 15px;
+  color: white;
+  border:none;
+  background-color: #FBCE20 ;
+  padding: auto;
+  height: 36px;
+  box-shadow: 0.5px 0.8px 2px 1px #d9b31b;
+  text-decoration: none;
+}
 
 /* * {
   border: 1px solid black;

@@ -1,5 +1,20 @@
 // Load JSON data and make page resposive
-import products from "./products.json" assert { type: "json" };
+import JsonProduct from "./products.json" assert { type: "json" };
+
+// check whether products exists in local storage 
+if (localStorage.getItem("LocalProducts") == null) {
+    localStorage.setItem("LocalProducts", JSON.stringify([]))
+} else {
+    let LocalProduct = JSON.parse(localStorage.getItem("LocalProducts"))
+    LocalProduct.forEach(e => {
+        JsonProduct.push(e)
+    })
+    console.log(LocalProduct)
+}
+
+localStorage.setItem("IdentityNumber", JsonProduct.length + 1)
+let products = JsonProduct
+console.log(products)
 let screenBig = false;
 let screenMin = false;
 let isOpen = false;
@@ -36,15 +51,24 @@ if (window.innerWidth <= screenSize) {
 
 function LoadProduct(params = "", age = null) {
     const main = document.querySelector("#items");
+    const top = document.querySelector("#bestsellers")
     products.forEach(product => {
         if ((age == null) ? true : product.age == age) {
             if (product.name.toLowerCase().includes(params.toLowerCase())) {
                 let item = MakeProduct(product);
-                const productDispay = document.createElement("div");
-                productDispay.setAttribute("class", "col-lg-4 col-md-6 p-2");
-                productDispay.setAttribute("data-products", "product");
-                productDispay.innerHTML = item;
-                main.append(productDispay);
+                if (product.best) {
+                    const productDispay = document.createElement("div");
+                    productDispay.setAttribute("class", "item");
+                    productDispay.setAttribute("data-products", "product");
+                    productDispay.innerHTML = item;
+                    top.append(productDispay);
+                } else {
+                    const productDispay = document.createElement("div");
+                    productDispay.setAttribute("class", "col-lg-4 col-md-6 p-2");
+                    productDispay.setAttribute("data-products", "product");
+                    productDispay.innerHTML = item;
+                    main.append(productDispay);
+                }
             }
         }
     });
@@ -72,11 +96,30 @@ document.querySelectorAll(".AgeButton").forEach(e => {
 
 
 function MakeProduct(product) {
-    let a = `
+    let a = ""
+    if (product.best) {
+        a = `
+            <p class="card-text">
+              <img src="${product.image.slice(0, 5) != "data:" ? "images/" + product.image : product.image}" style="width: 100%;">
+            </p>
+          </div>
+          <div class="text-black strong">
+            ${product.name}
+            
+          </div>
+          <div class="text-center">
+          <span>${"$" + product.price} </span>
+            <a class="AddToCart bestButton" data-productId="${product.id}">
+                    To Cart
+            </a>
+        </div>
+      `
+    } else {
+        a = `
     <div class="col-12 p-1" style="border-radius: 10px; block-size: fit-content; background-color: white;">
 
             <div class="imageBack">
-                <img src="images/${product.image}" class="card-img-top rounded ProductImage" />
+                <img src="${product.image.slice(0, 5) != "data:" ? "images/" + product.image : product.image}" class="card-img-top rounded ProductImage" />
             </div>
             <div class="ProductCard">
                 <div class="card-body">
@@ -105,6 +148,8 @@ function MakeProduct(product) {
             
         </div>
 `
+    }
+
     return a;
 }
 // let CartMenu = document.querySelector("#cartMenu");
@@ -284,7 +329,7 @@ function CartMake(productNumber, key) {
         }
     })
     let cart = `<div class="ItemImage">
-    <img class="imgIcon" src="./images/${product.image}" alt="product image">
+    <img class="imgIcon" src="${product.image.slice(0, 5) != "data:" ? "images/" + product.image : product.image}" alt="product image">
   </div>
   <div class="ItemTitle">
     <div class="cartTitle" >
@@ -335,7 +380,7 @@ function AddButton() {
             localStorage.setItem(sessionStorage.getItem("ActiveUser"), JSON.stringify(Data))
             // console.log(Data)
             // console.log(JSON.parse(localStorage.getItem(sessionStorage.getItem("ActiveUser"))))
-            if (this.value < 1 && this.value !='') {
+            if (this.value < 1 && this.value != '') {
                 toastr["info"]("Item removef from Cart")
                 ReloadCartPanel()
             }
@@ -387,3 +432,23 @@ function TotalCalculate() {
 
 }
 ReloadCartPanel()
+
+document.querySelector("#BuyButton").onclick = function () {
+    Swal.fire({
+        template: '#my-template-buy'
+    })
+
+    // Swal.fire({
+    //     title: 'Your order placed',
+    //     width: 600,
+    //     padding: '3em',
+    //     color: '#716add',
+    //     background: '#fff url(/images/trees.png)',
+    //     backdrop: `
+    //       rgba(0,0,123,0.4)
+    //       url("/images/nyan-cat.gif")
+    //       left top
+    //       no-repeat
+    //     `
+    //   })
+}
