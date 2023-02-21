@@ -1,5 +1,6 @@
 // Load JSON data and make page resposive
 import JsonProduct from "./products.json" assert { type: "json" };
+
 let admin = {
     Email: "Admin",
     Password: "12345"
@@ -19,9 +20,7 @@ if (localStorage.getItem("LocalProducts") == null) {
 }
 
 localStorage.setItem("IdentityNumber", JsonProduct.length + 1)
-
 localStorage.setItem("AllProducts", JSON.stringify(JsonProduct))
-
 let products = JsonProduct
 console.log(products)
 let screenBig = false;
@@ -262,6 +261,7 @@ function AddToCartButtonsHandle() {
         e.onclick = function () {
             if (CheckAcc()) {
                 UserData = JSON.parse(localStorage.getItem(sessionStorage.getItem('ActiveUser')))
+                console.log(UserData.CartProducts[e.getAttribute('data-productId')])
                 if (UserData.CartProducts[e.getAttribute('data-productId')] != null) {
                     UserData.CartProducts[e.getAttribute('data-productId')] = Number(UserData.CartProducts[e.getAttribute('data-productId')]) + Number(1);
                 } else {
@@ -280,8 +280,7 @@ function AddToCartButtonsHandle() {
                     }
                     if (result.isDenied) {
                         if (localStorage.getItem("Guest") != null) {
-                            var User = {
-                                FullName: "Guest",
+                            let User = {
                                 UserName: "Guest",
                                 Email: "Guest"
                             }
@@ -302,12 +301,13 @@ AddToCartButtonsHandle()
 
 let UserData = undefined
 function CheckAcc() {
+    
     if (sessionStorage.getItem('ActiveUser') == null) {
         console.log("please login")
 
         return false;
     } else {
-        UserData = JSON.parse(localStorage.getItem(sessionStorage.getItem('ActiveUser')))
+        let UserData = JSON.parse(localStorage.getItem(sessionStorage.getItem('ActiveUser')))
         if (UserData.CartProducts == undefined) {
             UserData.CartProducts = CartProducts
             localStorage.setItem(sessionStorage.getItem('ActiveUser'), JSON.stringify(UserData))
@@ -472,13 +472,14 @@ document.getElementById("BuyButton").onclick = function () {
                 window.location.assign(window.location.origin + "/Account/Login.html")
             }
             if (result.isDenied) {
-                if (localStorage.getItem("Guest") != null) {
-                    var User = {
+                if (localStorage.getItem("Guest") == null) {
+                    let GUESTDATA = {
                         FullName: "Guest",
                         UserName: "Guest",
                         Email: "Guest"
                     }
-                    localStorage.setItem("Guest", JSON.stringify(User))
+                    let stringggg = JSON.stringify(GUESTDATA)
+                    localStorage.setItem("Guest", stringggg)
                 }
                 sessionStorage.setItem("ActiveUser", "Guest")
                 window.location.assign(window.location.origin)

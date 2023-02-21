@@ -68,7 +68,7 @@ function TotalCalculate() {
 
 function Complete() {
     Swal.fire({
-        title: 'Uploading...',
+        title: 'Confirming....',
         html: 'Please wait...',
         allowEscapeKey: false,
         allowOutsideClick: false,
