@@ -12,6 +12,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./css/custom.css">
+  <link rel="stylesheet" href="./blockquote.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <style>
     * {
       /* border: solid; */
@@ -20,7 +22,7 @@
 </head>
 
 <body>
-  <header class="mx-3 mt-0">
+  <header class="mx-3">
     <nav class="navbar navbar-expand-md bg-nav">
 
       <div class="container-fluid">
@@ -37,24 +39,20 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-
-              <a class="nav-link highlightURL" onclick="window.location.assign(window.location.origin)">HOME</a>
+              <a class="nav-link highlightURL" onclick="window.location.assign(window.location.origin)">
+                HOME
+              </a>
             </li>
 
-
-            <!-- <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                aria-expanded="false">Content Management</a> -->
-            <!-- <div class="dropdown-menu">
-                <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="index">Category</a>
-                <a class="dropdown-item" asp-area="Admin" asp-controller="CoverType" asp-action="index">Cover Type</a>
-                <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="index">Product</a>
-                <a class="dropdown-item" asp-area="Admin" asp-controller="Company" asp-action="index">Company</a>
-              </div> -->
-            <!-- </li> -->
             <li class="nav-item">
-              <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">
+              <a class="nav-link">
                 ORDERS
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="AddProduct" style="display: none;" href="./AddProduct/index.html">
+                ADD PRODUCT
               </a>
             </li>
 
@@ -82,7 +80,7 @@
 
   <div>
     <div class="flex-container wrap">
-      <div class="flex-item-left">
+      <div class="flex-item-leftS">
 
         <div class="search">
           <input type="search" name="search" class="searchTerm" id="SearchTerm" pattern=".*\S.*" required>
@@ -113,10 +111,8 @@
             <div class="carousel-item active">
               <img src="./images/main1.png" class="w-100 d-block" alt="First slide">
               <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0,0,0, 0.2);">
-                <h3>Title</h3>
-                <button>buy</button>
-                <p>Description</p>
-
+                <h3>Happiness is</h3>
+                <h5>..the laughter of children</h5>
               </div>
             </div>
             <div class="carousel-item">
@@ -207,7 +203,7 @@
 
         <div class="container-fluid col-12 rounded contentBody">
           <div id="items" class="row p-5">
-
+            <span id="NoProducts">No Products Aviable</span>
           </div>
 
           </main>
@@ -239,6 +235,9 @@
       </div>
 
     </div>
+  </div>
+  <div class="flex-container mx-3 mb-3">
+      <img src="./images/AboutUs.png" class="img-fluid" alt="image desc">
   </div>
   <!-- footer -->
   <footer class="footer text-muted mt-auto rounded-top">

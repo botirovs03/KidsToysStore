@@ -105,7 +105,3 @@ input[type="button"]:hover {
   margin-bottom: 10px;
 }
 
-.gradient-custom {
-  background: linear-gradient(to right, #8c8df1, #e786f4);
-}
-

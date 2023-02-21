@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work</title>
+    <title>Add Product</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="../wwwroot/css/bootswatch.css">
     <style>
         /* * {
@@ -17,8 +19,60 @@
 </head>
 
 <body>
+    <header class="mx-3">
+        <nav class="navbar navbar-expand-md bg-nav">
+
+            <div class="container-fluid">
+                <a class="navbar-brand" onclick="window.location.assign(window.location.origin)"><img
+                        src="../images/Logo.png" class="logoImage"></a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                    aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+
+                            <a class="nav-link" onclick="window.location.assign(window.location.origin)">HOME</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">
+                                ORDERS
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link highlightURL" id="AddProduct" style="display: none;" href="./AddProduct/index.html">
+                                ADD PRODUCT
+                            </a>
+                        </li>
+
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark"  style="display: none;" id="register" href="../Account/Register.html">Register</a>
+                        </li>
+                        <li class="nav-item highlightURL">
+                            <a class="nav-link text-dark"   style="display: none;" id="login" href="../Account/Login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" style="display: none;" id="User" href="#"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" style="display: none;" id="LogOut" href="#">LogOut</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
     <form action="../index.html">
-        <div class="signup-box p-3">
+        <div class="signup-box p-3 my-3">
             <h1>Add Product</h1>
             <div class="mb-3">
                 <label for="ProductName" class="form-label">Name</label>
@@ -27,7 +81,7 @@
             </div>
             <div class="mb-3">
                 <label for="Price" class="form-label">Price </label>
-                <input type="number" class="form-control" name="Price" id="Price" placeholder="Product Price $"
+                <input type="number" step="any" min="0" class="form-control" name="Price" id="Price" placeholder="Product Price $"
                     required>
             </div>
             <div class="mb-3">
@@ -46,7 +100,7 @@
                         <label for="bestSeller" class="form-label">Bestseller?</label>
                         <select class="form-select form-select-sm" name="bestSeller" id="bestSeller">
                             <option selected value="true">Yes</option>
-                            <option value="false">No</option>
+                            <option value="">No</option>
                         </select>
                     </div>
                 </div>
@@ -63,18 +117,23 @@
                     </div>
                 </div>
             </div>
-            <input name="button" onclick="Add()" class="btn btn-primary" type="button" value="Button">
+            <input name="button" onclick="Add()" class="btn btn-primary mb-5" type="button" value="Add Product">
         </div>
 
     </form>
 
-
+    <footer class="footer text-muted mt-auto rounded-top">
+        <img src="../images/Logo.png" class="logoImage m-3">
+        <div class="text-center border-top">&copy; 2023 - Kids Toys Store</div>
+    </footer>
     <script>
         function Add(event) {
             if (document.querySelector("form").checkValidity()) {
                 let img = document.querySelector("#ImageFile")
                 let imageUrl
                 encodeImageFileAsURL(img)
+
+            } else {
 
             }
 
@@ -96,13 +155,17 @@
                 }
                 let localStorageProduct = JSON.parse(localStorage.getItem("LocalProducts"))
                 localStorageProduct.push(Product);
-                
+
                 console.log(localStorageProduct)
                 localStorage.setItem("LocalProducts", JSON.stringify(localStorageProduct))
             }
             reader.readAsDataURL(file);
         }
     </script>
+    <script src="../Account/LoginControl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

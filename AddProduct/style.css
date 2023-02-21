@@ -1,13 +1,11 @@
-body{
-    background:  #344c79;
-    font-family: 'roboto',sans-serif;
-}
+
 .signup-box{
+    padding-bottom: 10px;
     width: 360px;
-    height: 620px;
     margin: auto;
     background-color: white;
     border-radius: 5px;
+    box-shadow: 5px 1px 10px 0.05px #6caafb59;
 }
 h1{
     text-align: center;
@@ -33,11 +31,7 @@ input[type="button"]{
     color: white;
     font-size: 18px;
 }
-.button:hover {
-    background-color: #649b66
+.btn-primary:hover {
+    background-color: #3a9e85 !important
 }
-a{
-    text-align: center;
-    padding-top: 20px;
-    font-size: 15px;
-}
+

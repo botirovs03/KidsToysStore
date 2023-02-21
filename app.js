@@ -1,5 +1,10 @@
 // Load JSON data and make page resposive
 import JsonProduct from "./products.json" assert { type: "json" };
+let admin = {
+    Email: "Admin",
+    Password: "12345"
+}
+localStorage.setItem("Admin", JSON.stringify(admin))
 // to make BestSeller Slider work Smooth
 document.querySelector(".item").remove()
 // check whether products exists in local storage 
@@ -14,6 +19,9 @@ if (localStorage.getItem("LocalProducts") == null) {
 }
 
 localStorage.setItem("IdentityNumber", JsonProduct.length + 1)
+
+localStorage.setItem("AllProducts", JSON.stringify(JsonProduct))
+
 let products = JsonProduct
 console.log(products)
 let screenBig = false;
@@ -51,19 +59,25 @@ if (window.innerWidth <= screenSize) {
 }
 
 function LoadProduct(params = "", age = null) {
+    if (document.getElementById("NoProducts") != null) {
+        document.getElementById("NoProducts").remove()
+    }
+    let PrNumber = 0;
     const main = document.querySelector("#items");
     const top = document.querySelector("#bestsellers")
     products.forEach(product => {
-        if ((age == null) ? true : product.age == age) {
-            if (product.name.toLowerCase().includes(params.toLowerCase())) {
-                let item = MakeProduct(product);
-                if (product.best) {
-                    const productDispay = document.createElement("div");
-                    productDispay.setAttribute("class", "item");
-                    productDispay.setAttribute("data-products", "product");
-                    productDispay.innerHTML = item;
-                    top.append(productDispay);
-                } else {
+
+        let item = MakeProduct(product);
+        if (product.best) {
+            const productDispay = document.createElement("div");
+            productDispay.setAttribute("class", "item");
+            productDispay.setAttribute("data-products", "product");
+            productDispay.innerHTML = item;
+            top.append(productDispay);
+        } else {
+            if ((age == null) ? true : product.age == age) {
+                if (product.name.toLowerCase().includes(params.toLowerCase())) {
+                    PrNumber++
                     const productDispay = document.createElement("div");
                     // productDispay.setAttribute("class", "col-lg-4 col-md-6 p-2");
                     productDispay.setAttribute("class", " col-lg-4 col-md-4 col-sm-6 p-2");
@@ -74,6 +88,10 @@ function LoadProduct(params = "", age = null) {
             }
         }
     });
+    if (PrNumber == 0) {
+        main.innerHTML = `<span id="NoProducts">No Products Aviable</span>`
+    }
+
 }
 LoadProduct()
 
@@ -83,6 +101,7 @@ document.querySelector("#SearchButton").onclick = function () {
     // console.log(SearchText)
     LoadProduct(SearchText)
     AddToCartButtonsHandle()
+    scrollTo(document.getElementById("items"));
 }
 
 document.querySelectorAll(".AgeButton").forEach(e => {
@@ -433,22 +452,37 @@ function TotalCalculate() {
 }
 ReloadCartPanel()
 
-document.querySelector("#BuyButton").onclick = function () {
-    Swal.fire({
-        template: '#my-template-buy'
-    })
 
-    // Swal.fire({
-    //     title: 'Your order placed',
-    //     width: 600,
-    //     padding: '3em',
-    //     color: '#716add',
-    //     background: '#fff url(/images/trees.png)',
-    //     backdrop: `
-    //       rgba(0,0,123,0.4)
-    //       url("/images/nyan-cat.gif")
-    //       left top
-    //       no-repeat
-    //     `
-    //   })
+function scrollTo(element) {
+    window.scroll({
+        behavior: 'smooth',
+        left: 0,
+        top: element.offsetTop
+    });
+}
+
+document.getElementById("BuyButton").onclick = function () {
+    if (CheckAcc()) {
+        window.location.assign(window.location.origin + "/Checkout/index.html")
+    } else {
+        Swal.fire({
+            template: '#my-template'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.assign(window.location.origin + "/Account/Login.html")
+            }
+            if (result.isDenied) {
+                if (localStorage.getItem("Guest") != null) {
+                    var User = {
+                        FullName: "Guest",
+                        UserName: "Guest",
+                        Email: "Guest"
+                    }
+                    localStorage.setItem("Guest", JSON.stringify(User))
+                }
+                sessionStorage.setItem("ActiveUser", "Guest")
+                window.location.assign(window.location.origin)
+            }
+        })
+    }
 }
