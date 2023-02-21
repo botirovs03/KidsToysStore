@@ -279,7 +279,7 @@ function AddToCartButtonsHandle() {
                         window.location.assign(window.location.origin + "/Account/Login.html")
                     }
                     if (result.isDenied) {
-                        if (localStorage.getItem("Guest") != null) {
+                        if (localStorage.getItem("Guest") == null) {
                             let User = {
                                 UserName: "Guest",
                                 Email: "Guest"
