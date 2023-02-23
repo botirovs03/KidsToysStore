@@ -8,6 +8,11 @@
   src: url(./fonts/Poppins-Medium.ttf);
 }
 
+@font-face {
+  font-family: ProductsF;
+  src: url(./fonts/Poppins-SemiBold.ttf);
+}
+
 * {
   font-family: "SiteFont";
 }
@@ -161,7 +166,7 @@ main img {
   height: 0;
   overflow: hidden;
   position: sticky;
-  top: 30px;
+  top: 42px;
   width: 100%;
   transition: all 0.25s;
   box-shadow: 5px 1px 10px 0.05px #6caafb59;
@@ -528,6 +533,19 @@ main img {
   float: right;
 }
 
+.contentHolderImage{
+  margin: auto;
+  display: block;
+  width: 120px;
+  margin-bottom: -8px;
+  margin-top: 30px;
+}
+
+.contentProducts{
+  padding: 3rem 3rem 0 calc( 300px - 7rem );
+  font-size: 26px;
+  font-family: ProductsF;
+}
 /* * {
   border: 1px solid black;
 } */
@@ -558,7 +576,7 @@ main img {
   }
   #cartMin {
     position: sticky;
-    top: 60px;
+    top: 88px;
     z-index: 1000;
   }
 

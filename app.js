@@ -222,7 +222,7 @@ function resize() {
                 document.querySelector("#cartMenu").style.height = "25vh";
             }
             ReloadCartPanel()
-
+            BuyButtonHandle()
         }
         screenBig = false
     } else {
@@ -237,6 +237,7 @@ function resize() {
                 document.querySelector("#cartMenu").style.height = "calc( 100vh - 60px - 2.5rem - 30px)";
             }
             ReloadCartPanel()
+            BuyButtonHandle()
         }
         screenMin = false
     }
@@ -301,7 +302,7 @@ AddToCartButtonsHandle()
 
 let UserData = undefined
 function CheckAcc() {
-    
+
     if (sessionStorage.getItem('ActiveUser') == null) {
         console.log("please login")
 
@@ -460,30 +461,32 @@ function scrollTo(element) {
         top: element.offsetTop
     });
 }
-
-document.getElementById("BuyButton").onclick = function () {
-    if (CheckAcc()) {
-        window.location.assign(window.location.origin + "/Checkout/index.html")
-    } else {
-        Swal.fire({
-            template: '#my-template'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.assign(window.location.origin + "/Account/Login.html")
-            }
-            if (result.isDenied) {
-                if (localStorage.getItem("Guest") == null) {
-                    let GUESTDATA = {
-                        FullName: "Guest",
-                        UserName: "Guest",
-                        Email: "Guest"
-                    }
-                    let stringggg = JSON.stringify(GUESTDATA)
-                    localStorage.setItem("Guest", stringggg)
+function BuyButtonHandle() {
+    document.getElementById("BuyButton").onclick = function () {
+        if (CheckAcc()) {
+            window.location.assign(window.location.origin + "/Checkout/index.html")
+        } else {
+            Swal.fire({
+                template: '#my-template'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.assign(window.location.origin + "/Account/Login.html")
                 }
-                sessionStorage.setItem("ActiveUser", "Guest")
-                window.location.assign(window.location.origin)
-            }
-        })
+                if (result.isDenied) {
+                    if (localStorage.getItem("Guest") == null) {
+                        let GUESTDATA = {
+                            FullName: "Guest",
+                            UserName: "Guest",
+                            Email: "Guest"
+                        }
+                        let stringggg = JSON.stringify(GUESTDATA)
+                        localStorage.setItem("Guest", stringggg)
+                    }
+                    sessionStorage.setItem("ActiveUser", "Guest")
+                    window.location.assign(window.location.origin)
+                }
+            })
+        }
     }
 }
+BuyButtonHandle()
